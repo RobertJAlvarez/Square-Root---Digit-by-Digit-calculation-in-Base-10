@@ -1,7 +1,11 @@
+! Programmed by Robert Alvarez
+! Last modified: March 18th 2022
+!
+! Take the square root of a number using a digit by digit calculation while in base 10
 PROGRAM sqrt_test
   IMPLICIT NONE
-  INTEGER, PARAMETER :: INT_QD = SELECTED_INT_KIND(18)  ! Use 64 bits
-  INTEGER, PARAMETER :: REAL_DBL = SELECTED_REAL_KIND(p=15) ! Use 64 bits
+  INTEGER, PARAMETER :: INT_QD = SELECTED_INT_KIND(18)      ! Use 64 bits (Quadruple precision)
+  INTEGER, PARAMETER :: REAL_DBL = SELECTED_REAL_KIND(p=15) ! Use 64 bits (Double precision)
   REAL(REAL_DBL) :: num, quot_result, S1, S2
   INTEGER :: i
 
@@ -58,7 +62,7 @@ PROGRAM sqrt_test
       real_part = real_part*100
       two_dig = int(real_part)
       real_part = real_part - two_dig
-      rem = rem*100 + two_dig                     ! Add next 2 digits in the dividend
+      rem = rem*100 + two_dig                         ! Add next 2 digits in the dividend
       new_quot_dig = new_divi(divi,rem)               ! Find new digit for quotient
       quot = quot*10.0D0 + new_quot_dig               ! Update quotient
       rem = rem - ((divi+new_quot_dig)*new_quot_dig)  ! Perform division
